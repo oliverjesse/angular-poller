@@ -102,9 +102,9 @@
                 set: function (options) {
 
                     angular.forEach(['identifier', 'action', 'delay', 'params', 'smart', 'lazy'], function (prop) {
-                        if (options && options[prop]) {
+                        if (options && angular.isDefined(options[prop])) {
                             this[prop] = options[prop];
-                        } else if (!this[prop]) {
+                        } else if (angular.isUndefined(this[prop])) {
                             this[prop] = defaults[prop];
                         }
                     }, this);
